@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find five_dof_moveit_config)/launch/demo.launch" />
+
+  <arg name="set_goal_orientation" default="false" />
+  <node pkg="five_dof" type="test_moveit" name="test_moveit" args="$(arg set_goal_orientation)" />
+
+</launch>

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: five_dof
+    relative_path: xacro/five_dof.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/five_dof_arm.srdf
+  CONFIG:
+    author_name: Chris Schindlbeck
+    author_email: chris.schindlbeck@gmail.com
+    generated_timestamp: 1674732518

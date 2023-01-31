@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="five_dof_arm">
+
+  <link name="base_link" />
+
+  <joint name="joint1" type="prismatic">
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="10000.0" lower="-0.38" upper="0.38" velocity="1" />
+    <origin rpy="${pi/2} ${pi/2} 0" xyz="0.0 0.0 0.988" />
+  </joint>
+
+  <link name="link1">
+    <visual>
+      <geometry>
+        <box size="0.06 0.11 0.12" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.2 0.0 0.0" />
+    </visual>
+    <!-- Collision objectcs of joint <link1> -->
+    <collision>
+      <geometry>
+        <box size="0.06 0.11 0.12" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.2 0.0 0.0" />
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="joint2" type="revolute">
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 0 1" />
+    <limit effort="10000.0" lower="${-90*pi/180}" upper="${90*pi/180}" velocity="2" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.057 0.0 0.0" />
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <geometry>
+        <box size="0.3 0.1 0.1" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.13 0 0.037 " />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 0.1 0.1" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.13 0 0.037 " />
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="joint3" type="revolute">
+    <parent link="link2" />
+    <child link="link3" />
+    <limit effort="10000.0" lower="${-140*pi/180}" upper="${140*pi/180}" velocity="2" />
+    <axis xyz="0 0 1" />
+    <origin rpy="${180*pi/180} 0 0" xyz="0.250 0.0 -0.0005" />
+  </joint>
+
+  <link name="link3">
+    <visual>
+      <geometry>
+        <box size="0.33 0.0773 0.06" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" 0.1078 0.001 0.04 " />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.33 0.0773 0.06" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.04 " />
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="joint4" type="revolute">
+    <parent link="link3" />
+    <child link="link4" />
+    <limit effort="10000.0" lower="${-128/180*pi}" upper="${+128/180*pi}" velocity="2" />
+    <axis xyz="0 0 1" />
+    <origin rpy="${180*pi/180} 0 0" xyz="0.250 0 -0.018" />
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.0766" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0136 0.0028 0.0529 " />
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.0766" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0136 0.0028 0.0529 " />
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="joint5" type="revolute">
+    <parent link="link4" />
+    <child link="link5" />
+    <limit effort="10000.0" lower="${-90*pi/180}" upper="${90*pi/180}" velocity="2" />
+    <axis xyz="0 0 1" />
+    <origin rpy="${pi/2} 0 ${pi/2}" xyz="0.028 0.0 0.0535" />
+  </joint>
+
+  <link name="link5">
+    <visual>
+      <geometry>
+        <box size="0.0351 0.0896 0.066" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </visual>
+    <visual>
+      <geometry>
+        <box size="0.0351 0.0896 0.066" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0365 0.001 0.0587 " />
+    </visual>
+    <visual>
+      <geometry>
+        <box size="0.0422 0.0519 0.0376" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0702 -0.0096 0.0552 " />
+    </visual>
+    <visual>
+      <geometry>
+        <box size="0.0636 0.0026 0.0041" />
+      </geometry>
+      <origin rpy="0 0 -0.091" xyz=" -0.1295 -0.009 0.0529 " />
+    </visual>
+    <visual>
+      <geometry>
+        <box size="0.0636 0.0029 0.0034" />
+      </geometry>
+      <origin rpy="0 0 -6.171" xyz=" -0.1293 -0.0254 0.0523 " />
+    </visual>
+    <!-- Collision objectcs of joint <link5> -->
+    <collision name="box1">
+      <geometry>
+        <box size="0.0351 0.0896 0.066" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0365 0.001 0.0587 " />
+    </collision>
+    <collision name="box2">
+      <geometry>
+        <box size="0.0422 0.0519 0.0376" />
+      </geometry>
+      <origin rpy="0 0 0" xyz=" -0.0702 -0.0096 0.0552 " />
+    </collision>
+    <collision name="gripper_left">
+      <geometry>
+        <box size="0.0636 0.0026 0.0041" />
+      </geometry>
+      <origin rpy="0 0 -0.091" xyz=" -0.1295 -0.009 0.0529 " />
+    </collision>
+    <collision name="scissor_left">
+      <geometry>
+        <box size="0.0636 0.0029 0.0034" />
+      </geometry>
+      <origin rpy="0 0 -6.171" xyz=" -0.1293 -0.0254 0.0523 " />
+    </collision>
+    <inertial>
+      <mass value="1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+        iyy="1.0" iyz="0.0"
+        izz="1.0" />
+    </inertial>
+  </link>
+
+  <joint name="link5_to_EE" type="fixed">
+    <parent link="link5" />
+    <child link="EE" />
+    <origin rpy="${0} 0.0 ${pi}" xyz="-0.160 -0.0175 0.054" />
+  </joint>
+
+  <link name="EE" />
+
+</robot>
