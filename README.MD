@@ -34,4 +34,10 @@ source devel/setup.bash
 roslaunch five_dof run.launch set_goal_orientation:=false
 ```
 
-set set_goal_orientation to true
+Set
+
+```bash
+roslaunch five_dof run.launch set_goal_orientation:=true
+```
+
+to reproduce the bug
